@@ -64,7 +64,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: built-assets
-      - name: configureawscredentials
+      - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -73,6 +73,6 @@ jobs:
       - name: Upload built assets
         run: aws s3 sync.s3://${{ secrets.BUCKET_NAME }}--delete--only-show-errors
           --cache-control'max-age=31536000'--no-progress
-      - name: cloudfront invalidation
+      - name: Cloudfront invalidation
         run: aws cloudfront create-invalidation--distribution-id ${{
           secrets.DISTRIBUTION_ID }} --paths "/index.html"
