@@ -71,10 +71,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Upload built-assets
-        run:|
+        run:
          aws s3 sync.s3://${{ secrets.BUCKET_NAME }}--delete--only-show-errors
           --cache-control'max-age=31536000'--no-progress
       - name: Cloudfront Invalidation
-        run:|
+        run:
          aws cloudfront create-invalidation--distribution-id ${{
           secrets.DISTRIBUTION_ID }}--paths "/index.html"
