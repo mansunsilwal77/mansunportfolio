@@ -3,7 +3,7 @@ name: Build and Deploy Frontend
 on:
   push:
     branches:
-      - thapafinalproject
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
