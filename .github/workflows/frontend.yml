@@ -70,9 +70,11 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Upload built assets
-        run: aws s3 sync.s3://${{ secrets.BUCKET_NAME }}--delete--only-show-errors
+      - name: Upload built-assets
+        run:|
+         aws s3 sync.s3://${{ secrets.BUCKET_NAME }}--delete--only-show-errors
           --cache-control'max-age=31536000'--no-progress
-      - name: Cloudfront invalidation
-        run: aws cloudfront create-invalidation--distribution-id ${{
+      - name: Cloudfront Invalidation
+        run:|
+         aws cloudfront create-invalidation--distribution-id ${{
           secrets.DISTRIBUTION_ID }}--paths "/index.html"
