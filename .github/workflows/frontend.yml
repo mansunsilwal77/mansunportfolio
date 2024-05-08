@@ -65,7 +65,7 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - name: Download built artifact
+      - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
           name: built-assets
